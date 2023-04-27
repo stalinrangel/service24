@@ -1,6 +1,5 @@
 
 import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
 
 export interface Item {
   id: number,
@@ -18,10 +17,10 @@ const ITEMS_KEY = 'recent';
   providedIn: 'root'
 })
 export class StorageService {
+  private key: string="service-auth";
+  constructor() { }
 
-  constructor(private storage: Storage) { }
-
-  addRecent(item: Item): Promise<any> {
+  /*addRecent(item: Item): Promise<any> {
     return this.storage.get(ITEMS_KEY).then((items: Item[]) => {
       if (items) {
         items.push(item);
@@ -33,6 +32,7 @@ export class StorageService {
   };
 
   deleteRecent(id: number): Promise<Item> {
+    
     return this.storage.get(ITEMS_KEY).then((items: Item[]) => {
       if (!items || items.length === 0) {
         return null;
@@ -45,33 +45,36 @@ export class StorageService {
       }
       return this.storage.set(ITEMS_KEY, toKeep);
     });
-  }
+    
+  }*/
   
   get(key:any): Promise<any> {
-    return this.storage.get(key);
+    let data:any;
+    data=localStorage.getItem(key);
+    return data;
   }
 
   set(key:any, value:any) {
-    this.storage.set(key, value);
+    localStorage.setItem(key, value);
   }
 
   getObject(key:any) {
+    let val=localStorage.getItem(key);
     let returnValue;
-    return this.storage.get(key).then((val) => {
-      if(val) {
+    
+    if(val) {
         returnValue = JSON.parse(val);
-      } else {
+    } else {
         returnValue = null;
       }
     return returnValue;
-    });
   }
   
   setObject(key:any, value:any) {
-    this.storage.set(key, JSON.stringify(value));
+    localStorage.setItem(key, JSON.stringify(value));
   }
   
   remove(key:any) {
-    this.storage.remove(key);
+    localStorage.removeItem(key);
   }
 }

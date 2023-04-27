@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { NavController, LoadingController, AlertController, ToastController, Platform, ModalController } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-//import { StorageService } from '../services/storage.service';
+import { StorageService } from '../services/storage.service';
 import { AuthService } from '../services/auth.service';
 import { ObjetcserviceService } from '../services/objetcservice.service';
 //import { TutorialPage } from '../tutorial/tutorial.page';
@@ -45,7 +45,7 @@ export class LoginPage implements OnInit {
     private loadingController: LoadingController,  
     private builder: FormBuilder, 
     public alertController: AlertController, 
-    //public storage: StorageService,
+    public storage: StorageService,
     public auth: AuthService, 
     private toastController: ToastController,
     private objService: ObjetcserviceService,
@@ -78,8 +78,8 @@ export class LoginPage implements OnInit {
 
   initForm() {
     this.loginUserForm = this.builder.group({
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      email: ['prueba@socio.com', [Validators.required]],
+      password: ['123456', [Validators.required]],
       token_notificacion: ['']
     });
   }
@@ -93,6 +93,9 @@ export class LoginPage implements OnInit {
           console.log(data);
           if (data) {
             self.nav.navigateRoot('/tabs/tab1');
+            self.storage.set('TRPSV24',data.token);
+            self.storage.set('idRPSV24',data.user.repartidor.id);
+            self.storage.setObject('userRPSV24', data.user);
           }
         },error(err){
             console.log(err)

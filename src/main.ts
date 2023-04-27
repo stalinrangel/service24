@@ -3,6 +3,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { RouteReuseStrategy, provideRouter } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 
@@ -17,7 +18,7 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    importProvidersFrom(IonicModule.forRoot({}),ReactiveFormsModule,HttpClientModule,Storage),
+    importProvidersFrom(IonicModule.forRoot({}),ReactiveFormsModule,HttpClientModule,Storage,CommonModule),
     provideRouter(routes),
   ],
 });
