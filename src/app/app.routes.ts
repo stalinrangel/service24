@@ -17,4 +17,16 @@ export const routes: Routes = [
     path: 'email-password',
     loadComponent: () => import('./email-password/email-password.page').then( m => m.EmailPasswordPage)
   },
+  {
+    path: 'calification',
+    loadComponent: () => import('./calification/calification.page').then( m => m.CalificationPage)
+  },
+  {
+    path: 'edit-profile',
+    loadComponent: () => import('./edit-profile/edit-profile.page').then( m => m.EditProfilePage)
+  },
+  {
+    path: 'complete-register',
+    loadComponent: () => import('./complete-register/complete-register.page').then( m => m.CompleteRegisterPage)
+  },
 ];
