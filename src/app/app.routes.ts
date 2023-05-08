@@ -29,4 +29,16 @@ export const routes: Routes = [
     path: 'complete-register',
     loadComponent: () => import('./complete-register/complete-register.page').then( m => m.CompleteRegisterPage)
   },
+  {
+    path: 'detail-order',
+    loadComponent: () => import('./detail-order/detail-order.page').then( m => m.DetailOrderPage)
+  },
+  {
+    path: 'detail-tracking',
+    loadComponent: () => import('./detail-tracking/detail-tracking.page').then( m => m.DetailTrackingPage)
+  },
+  {
+    path: 'cancel-order',
+    loadComponent: () => import('./cancel-order/cancel-order.page').then( m => m.CancelOrderPage)
+  },
 ];

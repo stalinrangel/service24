@@ -122,7 +122,7 @@ export class Tab1Page {
               }
             },
             msg => {
-              this.loading.dismiss();
+              //this.loading.dismiss();
               if(msg.status == 400 || msg.status == 401){ 
                 this.storage.set('TRPSV24','');
                 this.presentToast(msg.error.error + ', Por favor inicia sesión de nuevo');
@@ -179,9 +179,9 @@ export class Tab1Page {
   }
 
   getOrders(){
-    this.storage.get('idRPSV24').then(items => {
+    let items:any=this.storage.get('idRPSV24')
       if (items) {
-        this.storage.get('TRPSV24').then(items2 => {
+        let items2:any= this.storage.get('TRPSV24')
           if (items2) {
             this.orderService.getInput(items,items2).subscribe(
             data => {
@@ -202,9 +202,7 @@ export class Tab1Page {
               }
             }); 
           }
-        });
       }
-    });
   }
 
   doRefresh(event:any) {

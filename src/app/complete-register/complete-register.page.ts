@@ -1612,6 +1612,17 @@ export class CompleteRegisterPage implements OnInit {
 	    //});
 	}
 
+	enviar(){
+		console.log(this.registerProfileForm.value);
+		console.log(this.data1ProfileForm.value);
+		console.log(this.data2ProfileForm.value);
+		console.log(this.referencePForm.value);
+		console.log(this.referenceCForm.value);
+		console.log(this.data1CompanyForm.value);
+		console.log(this.registeCompanyForm.value);
+		
+	}
+
 	changeDay(day:any){
 		console.log(day)
 		if (this.data2ProfileForm.controls[day].value) {
@@ -2471,11 +2482,13 @@ export class CompleteRegisterPage implements OnInit {
 			"domingo_f": this.data2ProfileForm.value.domingof
 		}
 		this.registerProfileForm.patchValue({disponibilidad: JSON.stringify(hours)});
-		console.log(this.registerProfileForm.value)
-		if (this.registerProfileForm.valid) {
-			this.storage.get('TRPSV24').then(items => {
+		//console.log(this.registerProfileForm.value)
+		//if (this.registerProfileForm.valid) {
+		if (true) {
+			let items = this.storage.get('TRPSV24');
+			//console.log(items)
 	  			if (items) {
-	  				console.log(this.registerProfileForm.value)
+	  				//console.log(this.registerProfileForm.value)
 	  				this.userService.setPreRegister(items,this.registerProfileForm.value).subscribe(
 				        data => {
 				        	console.log(data);
@@ -2506,8 +2519,7 @@ export class CompleteRegisterPage implements OnInit {
 					    }
 				    );
 	  			}
-		    });
-		} 
+			} 
 	}
 
 	sendEmpresa(){

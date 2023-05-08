@@ -170,6 +170,19 @@
   font-size: 15px;
   margin-top: 0px;
   position: relative;
+  max-width: 55px;
+  border: 0;
+}
+.area-info2{
+	color: #4D4D4D;
+  background-color: #F2F2F2;
+  border-radius: 4px;
+  font-family: "Muli-Regular";
+  --padding-start: 10px;
+  font-size: 15px;
+  margin-top: 0px;
+  position: relative;
+  border: 0;
 }
 .danger{
   border: 1px solid #B71C1C;
@@ -466,7 +479,7 @@ ion-icon {
 }
 .item-recom{
   position: absolute;
-  top: -10px;
+  top: 8px;
   z-index: 9999999;
   background: linear-gradient(45deg, #0279fb, rgb(7, 55, 99));
   color: #fff;

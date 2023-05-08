@@ -129,7 +129,7 @@ export class Tab2Page {
       if (items != '' && items != null) {
         let items2:any=this.storage.get('TRPSV24')
           if (items2 != '' && items2 != null) {
-            /*this.orderService.getTracking(items,items2).subscribe(
+            this.orderService.getTracking(items,items2).subscribe(
               data => {
               this.datos = data;
               this.orders = this.datos.pedido;
@@ -148,7 +148,7 @@ export class Tab2Page {
                   this.orders = [];
                 }      
               }
-            );*/
+            );
           }
       } else {
         this.orders = [];
@@ -161,9 +161,9 @@ export class Tab2Page {
   }
 
   initHistory(month:any,year:any){
-  	this.storage.getObject('userRPSV24').then((items: { repartidor: { id: any; }; id: any; }) => {
+  	let items:any=this.storage.getObject('userRPSV24')
   		if (items) {
-  			this.storage.get('TRPSV24').then(items2 => {
+  			let items2:any=this.storage.get('TRPSV24')
     			if (items2) {
     				this.orderService.getHistory(items.repartidor.id,month,year,items2).subscribe(
   		      data => {
@@ -198,9 +198,9 @@ export class Tab2Page {
   			      }
   			    });
     			}
-  	    });
+
   		}
-    });	
+
   }
 
   setDateP1(event:any){
@@ -208,9 +208,9 @@ export class Tab2Page {
   	this.DateCut = this.DateNow.split('-');
   	this.month = this.DateCut[1];
     this.presentLoading();
-    this.storage.getObject('userRPSV24').then((items: { repartidor: { id: any; }; id: any; }) => {
+    let items:any=this.storage.getObject('userRPSV24')
 		if (items) {
-			this.storage.get('TRPSV24').then(items2 => {
+			let items2:any=this.storage.get('TRPSV24')
 	  			if (items2) {
 	  				this.orderService.getHistory(items.repartidor.id,this.month,this.year,items2).subscribe(
 			        data => {
@@ -243,9 +243,7 @@ export class Tab2Page {
 				      }
 				    });
 	  			}
-		    });
 		}
-    });	
   }
 
   setDateP2(event:any){

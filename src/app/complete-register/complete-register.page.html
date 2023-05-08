@@ -66,18 +66,18 @@
 
 				<ion-item lines="none" class="item1">
 					<ion-label class="text-label" position="stacked">Dirección:</ion-label>
-					<ion-textarea placeholder="Dirección" formControlName="direccion" class="area-info" rows="3" cols="20" class="area-info" (ionBlur)="changeItem(5)" [ngClass]="{'danger': formErrors.direccion}"></ion-textarea>
+					<ion-textarea placeholder="Dirección" formControlName="direccion" class="area-info" rows="3" cols="20" class="area-info2" (ionBlur)="changeItem(5)" [ngClass]="{'danger': formErrors.direccion}"></ion-textarea>
 					<!--ion-icon slot="end" name="arrow-dropup" class="custom-map"></ion-icon-->
 				</ion-item>
 				<ion-item lines="none" class="item1">
-					<ion-label class="text-label" position="stacked">Dirección Exacta:</ion-label>
-					<ion-textarea placeholder="Dirección Exacta" formControlName="direccion_exacta" class="area-info" rows="3" cols="20" class="area-info ion-text-capitalize" (ionBlur)="changeItem(52)" [ngClass]="{'danger': formErrors.direccion_exacta}"></ion-textarea>
+					<ion-label class="text-label" position="stacked">Casa, piso, etc:</ion-label>
+					<ion-textarea placeholder="Dirección Exacta" formControlName="direccion_exacta" class="area-info" rows="3" cols="20" class="area-info2 ion-text-capitalize" (ionBlur)="changeItem(52)" [ngClass]="{'danger': formErrors.direccion_exacta}"></ion-textarea>
 				</ion-item>
 
-				<div class="content-map">
+				<!--div class="content-map">
 					<ion-icon name="locate" class="icon-location" (click)="tryGeolocation()"></ion-icon>
 					<div #map id="map"></div>
-				</div>
+				</div-->
 
 				<ion-item lines="none" class="item1">
 					<ion-label class="text-label" position="stacked">Fecha de Nacimiento</ion-label>
@@ -97,8 +97,8 @@
 					<ion-label class="text-label" position="stacked">Correo Electrónico</ion-label>
 					<ion-input type="email" formControlName="email" placeholder="Correo Electrónico" class="item-info3" (ionBlur)="changeItem(8)" [ngClass]="{'danger': formErrors.email}"></ion-input>
 				</ion-item>
-				<ion-button expand="block" color="tertiary" class="ion-text-capitalize btn-init" style="margin-top: 15px;" (click)="next1()">
-				Siguiente</ion-button>
+				<!--ion-button expand="block" color="tertiary" class="ion-text-capitalize btn-init" style="margin-top: 15px;" (click)="next1()">
+				Siguiente</ion-button-->
 			</form>
 			<form [formGroup]="data1CompanyForm" class="padding-space2" [hidden]="typeUser == '1'">
 		    	<p class="text-slide">Datos de la Empresa:</p>
@@ -175,76 +175,62 @@
 
 			<p class="text-slide">Disponibilidad:</p>
 				<ion-item class="item-days">
-					<ion-label class="day-active" [ngClass]="{'day-inactive': data2ProfileForm.value.lunes}" (click)="changeDay('lunes')">Lunes</ion-label>
+					<ion-label class="day-active" [ngClass]="{'day-inactive': data2ProfileForm.value.lunes}">Lunes</ion-label>
 					<div style="flex: 1; text-align: center;">
 						<p class="text-g" style="margin-bottom: 10px;">Horario:</p>
 						<div class="content-fhour">					
-							<ion-datetime *ngIf="formLocal.pais_id == '2'" display-format="hh:mmA" mode="ios" picker-format="hh mm A" formControlName="lunesi" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.lunes" minuteValues="0,15,30,45" (ionChange)="changeItem(21)"></ion-datetime>
-							<ion-datetime *ngIf="formLocal.pais_id != '2'" display-format="HH:mm" mode="ios" picker-format="HH mm" formControlName="lunesi" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.lunes" minuteValues="0,15,30,45" (ionChange)="changeItem(21)"></ion-datetime>
+							<input  mode="ios" formControlName="lunesi" class="area-info" >
 							<span class="text-g"> a </span>
-							<ion-datetime *ngIf="formLocal.pais_id == '2'" display-format="hh:mmA" mode="ios" picker-format="hh mm A" formControlName="lunesf" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.lunes" minuteValues="0,15,30,45" (ionChange)="changeItem(21)"></ion-datetime>
-							<ion-datetime *ngIf="formLocal.pais_id != '2'" display-format="HH:mm" mode="ios" picker-format="HH mm" formControlName="lunesf" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.lunes" minuteValues="0,15,30,45" (ionChange)="changeItem(21)"></ion-datetime>
+							<input  mode="ios" formControlName="lunesf" class="area-info" >
 						</div>
 					</div>
 				</ion-item>
 				<ion-item class="item-days">
 					<ion-label class="day-active" [ngClass]="{'day-inactive': data2ProfileForm.value.martes}" (click)="changeDay('martes')">Martes</ion-label>
 					<div class="align-hour">
-					<ion-datetime *ngIf="formLocal.pais_id == '2'" display-format="hh:mmA" mode="ios" picker-format="hh mm A" formControlName="martesi" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.martes" minuteValues="0,15,30,45" (ionChange)="changeItem(22)"></ion-datetime>
-					<ion-datetime *ngIf="formLocal.pais_id != '2'" display-format="HH:mm" mode="ios" picker-format="HH mm" formControlName="martesi" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.martes" minuteValues="0,15,30,45" (ionChange)="changeItem(22)"></ion-datetime>
-					<span class="text-g"> a </span>
-					<ion-datetime *ngIf="formLocal.pais_id == '2'" display-format="hh:mmA" mode="ios" picker-format="hh mm A" formControlName="martesf" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.martes" minuteValues="0,15,30,45" (ionChange)="changeItem(22)"></ion-datetime>
-					<ion-datetime *ngIf="formLocal.pais_id != '2'" display-format="HH:mm" mode="ios" picker-format="HH mm" formControlName="martesf" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.martes" minuteValues="0,15,30,45" (ionChange)="changeItem(22)"></ion-datetime>
+						<input  mode="ios" formControlName="martesi" class="area-info" >
+						<span class="text-g"> a </span>
+						<input  mode="ios" formControlName="martesi" class="area-info" >
 					</div>
 				</ion-item>
 				<ion-item class="item-days">
 					<ion-label class="day-active" [ngClass]="{'day-inactive': data2ProfileForm.value.miercoles}" (click)="changeDay('miercoles')">Miércoles</ion-label>
 					<div class="align-hour">
-					<ion-datetime *ngIf="formLocal.pais_id == '2'" display-format="hh:mmA" mode="ios" picker-format="hh mm A" formControlName="miercolesi" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.miercoles" minuteValues="0,15,30,45" (ionChange)="changeItem(23)"></ion-datetime>
-					<ion-datetime *ngIf="formLocal.pais_id != '2'" display-format="HH:mm" mode="ios" picker-format="HH mm" formControlName="miercolesi" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.miercoles" minuteValues="0,15,30,45" (ionChange)="changeItem(23)"></ion-datetime>
-					<span class="text-g"> a </span>
-					<ion-datetime *ngIf="formLocal.pais_id == '2'" display-format="hh:mmA" mode="ios" picker-format="hh mm A" formControlName="miercolesf" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.miercoles" minuteValues="0,15,30,45" (ionChange)="changeItem(23)"></ion-datetime>
-					<ion-datetime *ngIf="formLocal.pais_id != '2'" display-format="HH:mm" mode="ios" picker-format="HH mm" formControlName="miercolesf" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.miercoles" minuteValues="0,15,30,45" (ionChange)="changeItem(23)"></ion-datetime>
+						<input  mode="ios" formControlName="miercolesi" class="area-info" >
+						<span class="text-g"> a </span>
+						<input  mode="ios" formControlName="miercolesf" class="area-info" >
 					</div>
 				</ion-item>
 				<ion-item class="item-days">
 					<ion-label class="day-active" [ngClass]="{'day-inactive': data2ProfileForm.value.jueves}" (click)="changeDay('jueves')">Jueves</ion-label>
 					<div class="align-hour">
-					<ion-datetime *ngIf="formLocal.pais_id == '2'" display-format="hh:mmA" mode="ios" picker-format="hh mm A" formControlName="juevesi" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.jueves" minuteValues="0,15,30,45" (ionChange)="changeItem(24)"></ion-datetime>
-					<ion-datetime *ngIf="formLocal.pais_id != '2'" display-format="HH:mm" mode="ios" picker-format="HH mm" formControlName="juevesi" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.jueves" minuteValues="0,15,30,45" (ionChange)="changeItem(24)"></ion-datetime>
-					<span class="text-g"> a </span>
-					<ion-datetime *ngIf="formLocal.pais_id == '2'" display-format="hh:mmA" mode="ios" picker-format="hh mm A" formControlName="juevesf" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.jueves" minuteValues="0,15,30,45" (ionChange)="changeItem(24)"></ion-datetime>
-					<ion-datetime *ngIf="formLocal.pais_id != '2'" display-format="HH:mm" mode="ios" picker-format="HH mm" formControlName="juevesf" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.jueves" minuteValues="0,15,30,45" (ionChange)="changeItem(24)"></ion-datetime>
+						<input  mode="ios" formControlName="juevesi" class="area-info" >
+						<span class="text-g"> a </span>
+						<input  mode="ios" formControlName="juevesf" class="area-info" >
 					</div>
 				</ion-item>
 				<ion-item class="item-days">
 					<ion-label class="day-active" [ngClass]="{'day-inactive': data2ProfileForm.value.viernes}" (click)="changeDay('viernes')">Viernes</ion-label>
 					<div class="align-hour">
-				    <ion-datetime *ngIf="formLocal.pais_id == '2'" display-format="hh:mmA" mode="ios" picker-format="hh mm A" formControlName="viernesi" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.viernes" minuteValues="0,15,30,45" (ionChange)="changeItem(25)"></ion-datetime>
-				    <ion-datetime *ngIf="formLocal.pais_id != '2'" display-format="HH:mm" mode="ios" picker-format="HH mm" formControlName="viernesi" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.viernes" minuteValues="0,15,30,45" (ionChange)="changeItem(25)"></ion-datetime>
-					<span class="text-g"> a </span>
-					<ion-datetime *ngIf="formLocal.pais_id == '2'" display-format="hh:mmA" mode="ios" picker-format="hh mm A" formControlName="viernesf" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.viernes" minuteValues="0,15,30,45" (ionChange)="changeItem(25)"></ion-datetime>
-					<ion-datetime *ngIf="formLocal.pais_id != '2'" display-format="HH:mm" mode="ios" picker-format="HH mm" formControlName="viernesf" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.viernes" minuteValues="0,15,30,45" (ionChange)="changeItem(25)"></ion-datetime>
+						<input  mode="ios" formControlName="viernesi" class="area-info" >
+				    	<span class="text-g"> a </span>
+						<input  mode="ios" formControlName="viernesf" class="area-info" >
 					</div>
 				</ion-item>
 				<ion-item class="item-days">
 					<ion-label class="day-active" [ngClass]="{'day-inactive': data2ProfileForm.value.sabado}" (click)="changeDay('sabado')">Sábado</ion-label>
 					<div class="align-hour">
-				    <ion-datetime *ngIf="formLocal.pais_id == '2'" display-format="hh:mmA" mode="ios" picker-format="hh mm A" formControlName="sabadoi" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.sabado" minuteValues="0,15,30,45" (ionChange)="changeItem(26)"></ion-datetime>
-				    <ion-datetime *ngIf="formLocal.pais_id != '2'" display-format="HH:mm" mode="ios" picker-format="HH mm" formControlName="sabadoi" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.sabado" minuteValues="0,15,30,45" (ionChange)="changeItem(26)"></ion-datetime>
-					<span class="text-g"> a </span>
-					<ion-datetime *ngIf="formLocal.pais_id == '2'" display-format="hh:mmA" mode="ios" picker-format="hh mm A" formControlName="sabadof" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.sabado" minuteValues="0,15,30,45" (ionChange)="changeItem(26)"></ion-datetime>
-					<ion-datetime *ngIf="formLocal.pais_id != '2'" display-format="HH:mm" mode="ios" picker-format="HH mm" formControlName="sabadof" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.sabado" minuteValues="0,15,30,45" (ionChange)="changeItem(26)"></ion-datetime>
+						<input  mode="ios" formControlName="sabadoi" class="area-info" >
+				    	<span class="text-g"> a </span>
+						<input  mode="ios" formControlName="sabadof" class="area-info" >
 					</div>
 				</ion-item>
 				<ion-item class="item-days">
 					<ion-label class="day-active" [ngClass]="{'day-inactive': data2ProfileForm.value.domingo}" (click)="changeDay('domingo')">Domingo</ion-label>
 					<div class="align-hour">
-				    <ion-datetime *ngIf="formLocal.pais_id == '2'" display-format="hh:mmA" mode="ios" picker-format="hh mm A" formControlName="domingoi" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.domingo" minuteValues="0,15,30,45" (ionChange)="changeItem(27)"></ion-datetime>
-				    <ion-datetime *ngIf="formLocal.pais_id != '2'" display-format="HH:mm" mode="ios" picker-format="HH mm" formControlName="domingoi" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.domingo" minuteValues="0,15,30,45" (ionChange)="changeItem(27)"></ion-datetime>
-					<span class="text-g"> a </span>
-					<ion-datetime *ngIf="formLocal.pais_id == '2'" display-format="hh:mmA" mode="ios" picker-format="hh mm A" formControlName="domingof" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.domingo" minuteValues="0,15,30,45" (ionChange)="changeItem(27)"></ion-datetime>
-					<ion-datetime *ngIf="formLocal.pais_id != '2'" display-format="HH:mm" mode="ios" picker-format="HH mm" formControlName="domingof" class="area-info" cancelText="Cancelar" doneText="Aceptar" [disabled]="data2ProfileForm.value.domingo" minuteValues="0,15,30,45" (ionChange)="changeItem(27)"></ion-datetime>
+						<input  mode="ios" formControlName="domingoi" class="area-info" >
+				    	<span class="text-g"> a </span>
+						<input  mode="ios" formControlName="domingof" class="area-info" >
 					</div>
 				</ion-item>
 					<p class="text-slide">Idiomas:</p>
@@ -303,9 +289,9 @@
 					</ion-grid>
 					</ion-radio-group>
 					<br>
-				<ion-button expand="block" color="tertiary" class="ion-text-capitalize btn-init2" style="margin-right: 15px" (click)="back()">Atras</ion-button>
+				<!--ion-button expand="block" color="tertiary" class="ion-text-capitalize btn-init2" style="margin-right: 15px" (click)="back()">Atras</ion-button>
 				<ion-button expand="block" color="tertiary" class="ion-text-capitalize btn-init2" (click)="next2()">
-				Siguiente</ion-button>
+				Siguiente</ion-button-->
 			</form>
 		</ion-slide>
 		<!--ion-slide [hidden]="typeUser == '2'">
@@ -564,10 +550,10 @@
 				</ion-item>
 			</ion-card>
 			
-			<ion-button expand="block" color="tertiary" class="ion-text-capitalize btn-init2" style="margin-right: 15px" (click)="back()">
-			Atras</ion-button>
-			<ion-button expand="block" color="tertiary" class="ion-text-capitalize btn-init2" (click)="presentConfirm1()">
-			Enviar</ion-button>
+			<!--ion-button expand="block" color="tertiary" class="ion-text-capitalize btn-init2" style="margin-right: 15px" (click)="back()">
+			Atras</ion-button-->
+			<!--ion-button expand="block" color="tertiary" class="ion-text-capitalize btn-init2" (click)="presentConfirm1()">
+			Enviar</ion-button-->
 			</div>
 		</ion-slide>
 		<!--ion-slide>
@@ -631,9 +617,11 @@
 					</ion-card>
 				</div>
 				<br><br>
-				<ion-button expand="block" color="tertiary" class="ion-text-capitalize btn-init2" style="margin-right: 15px" (click)="back1()">Atras</ion-button>
-				<ion-button expand="block" color="tertiary" class="ion-text-capitalize btn-init2" (click)="setPlan()">
-				Enviar</ion-button>
+				<!--ion-button expand="block" color="tertiary" class="ion-text-capitalize btn-init2" style="margin-right: 15px" (click)="back1()">Atras</ion-button-->
+				<div style="display: flex;">
+					<ion-button expand="block" color="tertiary" class="ion-text-capitalize btn-init2" (click)="setPlan();enviar();presentConfirm1()">Guardar</ion-button>
+				</div>
+				<br><br> <br><br>
 			</div>
 		</ion-slide>
 		<!--ion-slide>

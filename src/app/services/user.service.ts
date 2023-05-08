@@ -43,7 +43,9 @@ export class UserService {
 
   /* POST pre-registro */
   setPreRegister(token:any,data:any): Observable<any>{
-    return this.http.post(`${environment.api}registro?token=`+token, data);
+    console.log(data)
+    console.log(`${environment.api}login/registro?token=`+token)
+    return this.http.post(`${environment.api}login/registro?token=`+token, data);
   }
 
   /* PUT pre-registro */
