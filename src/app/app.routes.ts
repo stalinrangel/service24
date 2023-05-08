@@ -41,4 +41,12 @@ export const routes: Routes = [
     path: 'cancel-order',
     loadComponent: () => import('./cancel-order/cancel-order.page').then( m => m.CancelOrderPage)
   },
+  {
+    path: 'list-services',
+    loadComponent: () => import('./list-services/list-services.page').then( m => m.ListServicesPage)
+  },
+  {
+    path: 'add-service',
+    loadComponent: () => import('./add-service/add-service.page').then( m => m.AddServicePage)
+  },
 ];

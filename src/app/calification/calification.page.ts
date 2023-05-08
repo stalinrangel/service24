@@ -10,7 +10,7 @@ import { StorageService } from '../services/storage.service';
 //import { File } from '@ionic-native/file/ngx';
 //import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 
-declare var cordova: any;
+//declare var cordova: any;
 
 @Component({
   selector: 'app-calification',
@@ -48,7 +48,7 @@ export class CalificationPage implements OnInit {
     public storage: StorageService,
     //private camera: Camera,
     //private filePath: FilePath,
-    private file: File,
+    //private file: File,
     //private transfer: FileTransfer,
     public actionSheetController: ActionSheetController,
     private platform: Platform
@@ -58,13 +58,13 @@ export class CalificationPage implements OnInit {
     this.Calification.pedido_id = this.value.id;
     this.Calification.producto_id = this.value.productos[0].id;
     this.Calification.califique_a = this.value.usuario_id;
-    cordova.plugins.backgroundMode.enable();
+    //cordova.plugins.backgroundMode.enable();
   }
 
   ionViewWillLeave(){
-    if (cordova.plugins.backgroundMode.isEnabled()) {
+    /*if (cordova.plugins.backgroundMode.isEnabled()) {
       cordova.plugins.backgroundMode.disable();
-    }
+    }*/
   }
 
   onModelChange(ev:any){
@@ -189,7 +189,8 @@ export class CalificationPage implements OnInit {
     if (img === null) {
       return '';
     } else {
-      return cordova.file.dataDirectory + img;
+      //return cordova.file.dataDirectory + img;
+      return 1;
     }
   }
 
