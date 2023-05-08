@@ -13,6 +13,7 @@ import { NotificationsComponent } from '../notifications/notifications.component
 import { RefreshService } from '../services/refresh.service';
 import { Subscription } from 'rxjs';
 import * as moment from 'moment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -50,6 +51,7 @@ export class Tab1Page {
     public cdr: ChangeDetectorRef,
     private alertController: AlertController,
     public modalController: ModalController,
+    private router: Router
     //private subscription1: Subscription,
     //private subscription2: Subscription,
     //private subscription3: Subscription,
@@ -61,6 +63,11 @@ export class Tab1Page {
     /*this.ga.trackView('Home')
     .then(() => {})
     .catch(e => console.log(e));*/
+    console.log(this.storage.get('idRPSV24'))
+    let isSesion:any=this.storage.get('idRPSV24');
+    if (isSesion==''||isSesion==null) {
+      this.router.navigate(['/login']);
+    }
   }
 
   ionPageWillLeave() {
