@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 //import { StorageService } from './storage.service';
+import '@capacitor-community/http';
+import { Plugins } from '@capacitor/core';
+import { isPlatform } from '@ionic/angular';
+import { Http, HttpResponse } from '@capacitor-community/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +20,8 @@ export class AuthService {
  
   login(model: any): Observable<any> {
     console.log(model)
+    //this.doGet();
+    //this.get(`${environment.api}login/repartidores`);
     return this.http.post(`${environment.api}login/repartidores`, model)
   }
 
@@ -50,4 +57,35 @@ export class AuthService {
       //observer.complete();
     //});
   }
+  get(url:any){
+    /*if (isPlatform('capacitor')) {
+      alert('capacitor')
+      const { Http } = Plugins;
+      return from(Http.request({
+        method: 'GET',
+      })
+      ).pipe(map=>result.data);
+    }else{
+      alert('no capcitor')
+    }*/
+  }
+  // Example of a GET request
+  doGet = async () => {
+    const options = {
+      url: 'https://service24.app/apii/public/categorias',
+      headers: { 'X-Fake-Header': 'Max was here' },
+      params: { size: 'XL' },
+    };
+    alert('https://service24.app/apii/public/categorias')
+    const response: HttpResponse = await Http.get(options);
+    alert(JSON.stringify(response))
+    
+    let data:any=response;
+    console.log(data.data.categorias)
+    alert(JSON.stringify(data.data.categorias))
+    // or...
+    // const response = await Http.request({ ...options, method: 'GET' })
+  }
 }
+
+

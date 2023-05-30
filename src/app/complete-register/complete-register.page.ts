@@ -2510,6 +2510,7 @@ export class CompleteRegisterPage implements OnInit {
 										},300);	
 						        	},300);	
 					  			}
+							this.navCtrl.navigateRoot('add-service');
 						    //});       	
 				        },
 				        msg => {  

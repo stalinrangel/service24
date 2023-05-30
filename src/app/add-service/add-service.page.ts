@@ -172,7 +172,7 @@ export class AddServicePage implements OnInit {
 	      fotos: [''],
 	      ciudad: [''],
 	      zona: [''],
-	      zona_id: ['', [Validators.required]]
+	      zona_id: [1, [Validators.required]]
 		});
 		this.registerServiceForm.valueChanges.subscribe(data => this.onValueChanged(data));
 		this.onValueChanged();
@@ -618,12 +618,13 @@ export class AddServicePage implements OnInit {
 			this.registerServiceForm.patchValue({zona_id: JSON.stringify(this.selecZones)});
 		}
 		if (this.registerServiceForm.valid) {
-			if (this.images_upload.length > 0) {
+			//if (this.images_upload.length > 0) {
+			if (true) {
 				this.registerServiceForm.patchValue({fotos: JSON.stringify(this.images_upload)});
 				this.presentLoading();
-				this.storage.get('userRPSV24').then(items => {
+				let items :any= this.storage.get('userRPSV24');
 		  			if (items) {
-						this.storage.get('TRPSV24').then(items2 => {
+						let items2:any=this.storage.get('TRPSV24');
 				  			if (items2) {
 				  				let id = JSON.parse(items).establecimiento.id;
 				  				this.registerServiceForm.patchValue({establecimiento_id: id});
@@ -633,7 +634,8 @@ export class AddServicePage implements OnInit {
 						        data => {
 						        	this.dismiss();
 								    this.presentToast1('¡Servicio añadido con éxito! Te notificaremos cuando éste sea aprobado');
-								    this.navCtrl.pop();
+								    //this.navCtrl.pop();
+									this.navCtrl.navigateRoot('');
 							    },
 							    msg => {
 							      this.dismiss();
@@ -646,9 +648,9 @@ export class AddServicePage implements OnInit {
 							      }
 							    });
 				  			} 
-					    });
+					   // });
 				    }
-			    });
+			    //});
 			} else {
 				this.presentToast('Debe agregar al menos una imagen de tu servicio.');
 			};
@@ -666,7 +668,7 @@ export class AddServicePage implements OnInit {
 	}
 
   onValueChanged(data?: any) {
-    if (!this.registerServiceForm) { return; }
+    /*if (!this.registerServiceForm) { return; }
     const form = this.registerServiceForm;
     for (const field in this.formErrors) { 
       const control = form.get(field);
@@ -677,7 +679,7 @@ export class AddServicePage implements OnInit {
           console.log(key);
         }
       } 
-    }
+    }*/
   }
 
   validateAllFormFields(formGroup: FormGroup) {

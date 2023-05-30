@@ -78,8 +78,8 @@ export class LoginPage implements OnInit {
 
   initForm() {
     this.loginUserForm = this.builder.group({
-      email: ['prueba@socio.com', [Validators.required]],
-      password: ['123456', [Validators.required]],
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
       token_notificacion: ['']
     });
   }
@@ -91,7 +91,9 @@ export class LoginPage implements OnInit {
       this.auth.login(this.loginUserForm.value).subscribe({
         next(data){
           console.log(data);
+          //alert(JSON.stringify(data))
           if (data) {
+            
             self.nav.navigateRoot('/tabs/tab1');
             self.storage.set('TRPSV24',data.token);
             self.storage.set('idRPSV24',data.user.repartidor.id);
@@ -99,6 +101,7 @@ export class LoginPage implements OnInit {
           }
         },error(err){
             console.log(err)
+            alert(JSON.stringify(err))
         }
         });
     }   
