@@ -104,7 +104,7 @@ export class Tab1Page {
   }
 
   initStatus(){
-    this.presentLoading();
+    //this.presentLoading();
     //this.storage.get('idRPSV24').then(items => {
       let items:any=this.storage.get('idRPSV24');
       if (items) {

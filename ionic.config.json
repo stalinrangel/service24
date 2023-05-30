@@ -3,5 +3,11 @@
   "integrations": {
     "capacitor": {}
   },
-  "type": "angular"
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/apii/public/",
+      "proxyUrl": "https://service24.app/apii/public"
+    }
+  ]
 }
