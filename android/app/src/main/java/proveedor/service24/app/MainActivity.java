@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package proveedor.service24.app;
 
 import com.getcapacitor.BridgeActivity;
 

@@ -1,14 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-
-  buildToolsVersion '33.0.2'
-  compileSdk 32
-  defaultConfig {
-        applicationId "io.ionic.starter"
-    minSdk 22
-    targetSdk 32
-    versionCode 1
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "proveedor.service24.app"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
