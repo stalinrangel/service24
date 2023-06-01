@@ -27,7 +27,7 @@ export class Tab1Page {
   public active: boolean = false;
   public show_active: boolean = true;
   public status: number = 10;
-	public estado = { 
+	public estado :any= { 
     activo: 2,
     token: null
   };
@@ -104,7 +104,7 @@ export class Tab1Page {
   }
 
   initStatus(){
-    //this.presentLoading();
+    this.presentLoading();
     //this.storage.get('idRPSV24').then(items => {
       let items:any=this.storage.get('idRPSV24');
       if (items) {
@@ -153,9 +153,9 @@ export class Tab1Page {
       } else {
         this.estado.activo = 2;
       }
-      this.storage.get('idRPSV24').then(items => {
+      let items=this.storage.get('idRPSV24');
       if (items) {
-        this.storage.get('TRPSV24').then(items2 => {
+        let items2=this.storage.get('TRPSV24');
             if (items2) {
               this.estado.token = items2;
               this.userService.setStatus(items,items2,this.estado).subscribe(
@@ -179,9 +179,9 @@ export class Tab1Page {
                 }
               });
             }
-          });
+         // });
         }
-      });
+      //});
     }
   }
 
