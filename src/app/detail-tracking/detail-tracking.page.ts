@@ -129,14 +129,15 @@ export class DetailTrackingPage implements OnInit {
   }
 
   finish(){
+    
     this.finishRoute.pedido_id = this.data.id;
-    this.storage.get('idRPSV24').then(items => {
+    let items:any=this.storage.get('idRPSV24');
       if (items != '' && items != null) {
-        this.storage.get('TRPSV24').then(items2 => {
+        let items2:any=this.storage.get('TRPSV24');
           if (items2 != '' && items2 != null) {
             this.finishRoute.token = items2;
-            this.storage.get('notify_RPSV24').then(items3 => {
-              if (items3 != '' && items3 != null) {
+            let items3:any = this.storage.get('notify_RPSV24');
+              //if (items3 != '' && items3 != null) {
                 this.finishRoute.token_notificacion = items3;
                 this.presentLoading();
                 this.orderService.finishService(items,this.finishRoute,items2).subscribe(
@@ -156,12 +157,9 @@ export class DetailTrackingPage implements OnInit {
                     }       
                   }
                 );
-              }
-            });
+              //}
           }
-        });
       }
-    });
   }
 
   GoMap(){

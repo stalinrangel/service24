@@ -129,4 +129,8 @@ export const routes: Routes = [
     path: 'zones-service',
     loadComponent: () => import('./zones-service/zones-service.page').then( m => m.ZonesServicePage)
   },
+  {
+    path: 'chat-pedidos',
+    loadComponent: () => import('./chat-pedidos/chat-pedidos.page').then( m => m.ChatPedidosPage)
+  },
 ];

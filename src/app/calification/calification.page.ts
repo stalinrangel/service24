@@ -72,14 +72,15 @@ export class CalificationPage implements OnInit {
   }
 
   sendCalification(){
+    this.Calification.puntaje=5;
     if (this.Calification.puntaje == 0) {
       this.presentToast('Debes asignar un puntaje para enviar la calificación.')
     } else {
-    /*  this.presentLoading();
-      this.storage.getObject('userRPSV24').then(items => {
+    this.presentLoading();
+      let items:any = this.storage.getObject('userRPSV24');
         if (items) {
           this.Calification.usuario_id = items.id;
-          this.storage.get('TRPSV24').then(items2 => {
+          let items2:any= this.storage.get('TRPSV24');
             if (items2) {
               this.Calification.token = items2;
               this.orderService.sendCalification(this.Calification,items2).subscribe(
@@ -99,9 +100,7 @@ export class CalificationPage implements OnInit {
                 }
               );
             }
-          });
         }
-      });*/  
     }
   }
   
