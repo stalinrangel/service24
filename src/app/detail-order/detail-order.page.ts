@@ -67,10 +67,10 @@ export class DetailOrderPage implements OnInit {
   getOrder(id:any) {
     let items2:any=this.storage.get('TRPSV24')
       if (items2) {
-        this.presentLoading();
+        //this.presentLoading();
         this.orderService.getOrderId(id,items2).subscribe(
         data => {
-          this.loading.dismiss();
+          //this.loading.onDidDismiss();
           this.datos = data;
           console.log(data);
           this.user.nombre = this.datos.pedido.usuario.nombre;

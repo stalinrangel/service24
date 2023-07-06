@@ -104,7 +104,7 @@ export class Tab1Page {
   }
 
   initStatus(){
-    this.presentLoading();
+    //this.presentLoading();
     //this.storage.get('idRPSV24').then(items => {
       let items:any=this.storage.get('idRPSV24');
       if (items) {
@@ -116,7 +116,7 @@ export class Tab1Page {
               console.log(data);
               this.repartidor = data;
               this.status = this.repartidor.repartidor.activo;
-              this.loading.dismiss();
+              //this.loading.onDidDismiss();
               if (this.repartidor.repartidor.estado === 'OFF') {
                 this.status = 0;
               } else {
